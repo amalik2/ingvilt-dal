@@ -371,10 +371,10 @@ namespace Ingvilt.Repositories {
         }
 
         public async Task<PaginationResult<Series>> GetSeriesToWatchInLibrary(Pagination pagination, long libraryId, string nameFilter) {
-            var unfinishedSeriesNestedSubquery = $"SELECT series_id, SUM(CASE WHEN times_watched > 0 THEN 1 ELSE 0 END) AS watched_count, COUNT(*) AS total_count FROM video WHERE library_id = {libraryId} AND deleted = false GROUP BY series_id HAVING watched_count < total_count";
-            var unfinishedSeriesSubquery = $"SELECT series_id FROM ({unfinishedSeriesNestedSubquery})";
+            var finishedSeriesNestedSubquery = $"SELECT series_id, SUM(CASE WHEN times_watched > 0 THEN 1 ELSE 0 END) AS watched_count, COUNT(*) AS total_count FROM video WHERE library_id = {libraryId} AND deleted = false GROUP BY series_id HAVING watched_count = total_count";
+            var finishedSeriesSubquery = $"SELECT series_id FROM ({finishedSeriesNestedSubquery})";
 
-            var query = $"{SELECT_BASE} WHERE library_id = {libraryId} AND deleted = false AND name LIKE @NameFilter AND worth_watching = true AND series_id IN ({unfinishedSeriesSubquery})";
+            var query = $"{SELECT_BASE} WHERE library_id = {libraryId} AND deleted = false AND name LIKE @NameFilter AND worth_watching = true AND series_id NOT IN ({finishedSeriesSubquery})";
             Action<SqliteCommand> parameterize = (command) => {
                 command.Parameters.AddWithValue("@NameFilter", $"%{nameFilter}%");
             };

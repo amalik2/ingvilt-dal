@@ -890,5 +890,17 @@ namespace IntegrationTesting.Repositories {
 
             CollectionAssert.AreEquivalent(expectedSeries, actualSeries);
         }
+
+        [TestMethod]
+        public void GetSeriesToWatchInLibrary_WithNoVideosInSeries() {
+            var seriesToCreate = new CreateSeriesDto("Test library", "https://ingvilt.test.url", -1, "test desc", -1, testLibrary.LibraryId, -1, true);
+            var seriesId = repository.CreateSeries(seriesToCreate);
+            var series = repository.GetSeries(seriesId).Result;
+
+            var expectedSeries = new List<Series> { series };
+            var actualSeries = repository.GetSeriesToWatchInLibrary(GetFirstPage(), testLibrary.LibraryId, "").Result.Results;
+
+            CollectionAssert.AreEquivalent(expectedSeries, actualSeries);
+        }
     }
 }

@@ -1,10 +1,10 @@
 ﻿using Ingvilt.Constants;
 using Ingvilt.Dto;
-using Ingvilt.Dto.Libraries;
 using Ingvilt.Models.DataAccess;
 using Ingvilt.Util;
 
 using Microsoft.Data.Sqlite;
+
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -131,6 +131,30 @@ namespace Ingvilt.Repositories {
 
                     command.Parameters["@Key"].Value = nameof(settings.VideoPreviewDateFormat);
                     command.Parameters["@Value"].Value = settings.VideoPreviewDateFormat;
+                    command.ExecuteNonQuery();
+
+                    command.Parameters["@Key"].Value = nameof(settings.ShowCharacters);
+                    command.Parameters["@Value"].Value = settings.ShowCharacters.ToString();
+                    command.ExecuteNonQuery();
+
+                    command.Parameters["@Key"].Value = nameof(settings.ShowCreators);
+                    command.Parameters["@Value"].Value = settings.ShowCreators.ToString();
+                    command.ExecuteNonQuery();
+
+                    command.Parameters["@Key"].Value = nameof(settings.ShowLocations);
+                    command.Parameters["@Value"].Value = settings.ShowLocations.ToString();
+                    command.ExecuteNonQuery();
+
+                    command.Parameters["@Key"].Value = nameof(settings.ShowPublishers);
+                    command.Parameters["@Value"].Value = settings.ShowPublishers.ToString();
+                    command.ExecuteNonQuery();
+
+                    command.Parameters["@Key"].Value = nameof(settings.ShowSeries);
+                    command.Parameters["@Value"].Value = settings.ShowSeries.ToString();
+                    command.ExecuteNonQuery();
+
+                    command.Parameters["@Key"].Value = nameof(settings.ShowVideos);
+                    command.Parameters["@Value"].Value = settings.ShowVideos.ToString();
                     command.ExecuteNonQuery();
 
                     txn.Commit();

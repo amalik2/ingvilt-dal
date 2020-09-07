@@ -17,7 +17,7 @@ namespace Ingvilt.Repositories {
             tagCommand.Parameters.AddWithValue("@TagName", tag.Name);
             tagCommand.Parameters.AddWithValue("@UniqueId", UniqueIdUtil.GenerateUniqueId());
             tagCommand.ExecuteNonQuery();
-            return QueryUtil.GetLastInsertedPrimaryKey(db, txn); 
+            return QueryUtil.GetLastInsertedPrimaryKey(db, txn);
         }
 
         private long CreateTag(CreateTagDto tag, string tableName) {
@@ -210,7 +210,7 @@ namespace Ingvilt.Repositories {
 
                 var tags = new List<Tag>();
                 while (reader.Read()) {
-                    tags.Add(new CharacterTag(reader.GetInt64(0), reader.GetString(1), reader.GetString(2)));
+                    tags.Add(new CharacterTag(reader.GetInt64(0), reader.GetString(1), reader.GetString(2), reader.GetString(3)));
                 }
 
                 return tags;
@@ -455,7 +455,7 @@ namespace Ingvilt.Repositories {
             if (tags.Count == 0) {
                 return;
             }
-            
+
             using (var db = DataAccessUtil.CreateSqlConnection()) {
                 db.Open();
 
@@ -487,7 +487,7 @@ namespace Ingvilt.Repositories {
 
                 using (var txn = db.BeginTransaction()) {
                     var command = new SqliteCommand("INSERT OR IGNORE INTO tag_on_video(tag_id, video_id) SELECT tag_id, @VideoId as 'video_id' FROM tag WHERE unique_id = @TagId", db, txn);
-                    command.Parameters.AddWithValue("@VideoId", -1); 
+                    command.Parameters.AddWithValue("@VideoId", -1);
                     command.Parameters.AddWithValue("@TagId", -1);
 
                     foreach (var t in tags) {

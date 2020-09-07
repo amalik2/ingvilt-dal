@@ -1,0 +1,21 @@
+Ingvilt Privacy Policy
+
+This Privacy Policy describes how your personal information is collected, used, and shared when you use the Ingvilt UWP application.
+
+PERSONAL INFORMATION WE COLLECT
+
+This application itself does not directly collect information about you or your device. However, if you create media files from web URLs, then the application must make a network request to retrieve the data from those URLs.
+During those network requests, the website that the URL links to can collect certain information about your device, including but not limited to information about your operating system, the fact that you are using an application to fetch the data, your IP address, and time zone.
+This application will never attempt to directly access or store any of that information that websites collect.
+
+HOW DO WE USE YOUR PERSONAL INFORMATION?
+
+We don't track or use your personal information.
+
+CHANGES
+
+We may update this privacy policy from time to time in order to reflect, for example, changes to our practices or for other operational, legal or regulatory reasons.
+
+CONTACT US
+
+For more information about our privacy practices, if you have questions, or if you would like to make a complaint, please contact us by e-mail at ahnmalik2@gmail.com or raise an issue here: https://github.com/amalik2/ingvilt-dal/issues

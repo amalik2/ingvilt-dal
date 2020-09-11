@@ -1,5 +1,5 @@
 # ingvilt-dal
-The data access layer aspect of the Ingvilt application. The main application can be found [on the Microsoft app store](TODO)
+The data access layer aspect of the Ingvilt application. The main application can be found [on the Microsoft app store](https://www.microsoft.com/en-ca/p/ingvilt/9p7jw80w0jjt#activetab=pivot:overviewtab)
 
 ### Purpose
 This repository serves multiple purposes:

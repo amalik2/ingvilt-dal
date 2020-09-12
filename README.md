@@ -1,8 +1,8 @@
-### The name Ingvilt
-The name for this application was primarily inspired by old norse names from the Viking age.
-
 # ingvilt-dal
 The data access layer aspect of the Ingvilt application. The main application can be found [on the Microsoft app store](https://www.microsoft.com/en-ca/p/ingvilt/9p7jw80w0jjt#activetab=pivot:overviewtab)
+
+### The name Ingvilt
+The name for this application was primarily inspired by old norse names from the Viking age.
 
 ### Purpose
 This repository serves multiple purposes:
